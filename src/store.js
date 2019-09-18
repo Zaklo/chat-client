@@ -29,6 +29,9 @@ socket.on('connect', () => {
   socket.on('command new', (msg) => {
     console.log('command new', msg)
   })
+  socket.on('chat error', ({ code, message }) => {
+    console.error(`[${code}] ${message}`)
+  })
 })
 
 const store = new Vue({
