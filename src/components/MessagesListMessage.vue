@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="{ 'is-owner': isOwner }">
     (<em>{{ formattedTime }}</em>) {{ message.user.username }}: {{ message.text }}
   </div>
 </template>
@@ -12,6 +12,9 @@ export default {
     message: {
       type: Object,
       required: true
+    },
+    isOwner: {
+      type: Boolean
     }
   },
   computed: {
@@ -21,3 +24,8 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+  .is-owner
+    background: pink
+</style>

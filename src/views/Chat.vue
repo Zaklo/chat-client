@@ -1,7 +1,7 @@
 <template>
   <div>
     <UsersList :users="store.users" :user="store.user"/>
-    <MessagesList :messages="store.messages"/>
+    <MessagesList :messages="store.messages" :user="store.user"/>
     <MessageBox @messageSent="onMessageSent"/>
   </div>
 </template>
