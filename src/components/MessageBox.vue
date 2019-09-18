@@ -9,6 +9,12 @@
   </div>
 </template>
 
+<style lang="stylus" scoped>
+  div {
+    background: pink
+  }
+</style>
+
 <script>
 export default {
   data () {

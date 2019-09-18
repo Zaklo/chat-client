@@ -1,17 +1,27 @@
 <template>
   <div>
+    <p>Connected as: {{ user.name }}</p>
     <p>
       {{ usersCount }}
     </p>
     <ul>
-      <li v-for="(user, i) in users" :key="i">{{user}}</li>
+      <UsersListUser v-for="(user, i) in users" :user="user" :key="i" />
     </ul>
   </div>
 </template>
 
 <script>
+import UsersListUser from './UsersListUser'
+
 export default {
+  components: {
+    UsersListUser
+  },
   props: {
+    user: {
+      type: Object,
+      required: true
+    },
     users: {
       type: Array,
       required: true
