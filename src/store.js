@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import io from 'socket.io-client'
 
+// const socket = io('http://localhost:3000')
 const socket = io('https://bddi-2019-chat.herokuapp.com/')
 
 socket.on('connect', () => {
@@ -16,8 +17,22 @@ socket.on('connect', () => {
     store.isRegistered = true
     sessionStorage.setItem('user', JSON.stringify(user))
   })
-  socket.on('users update', ({ users }) => {
-    store.users = users
+  socket.on('users update', ({ users, user, type }) => {
+    if (user.username === store.user.username) {
+      // First join we update all the users
+      store.users = users
+    } else {
+      switch (type) {
+        case 'join':
+          store.users.push(user)
+          break
+        case 'left':
+          const index = store.users.findIndex((storeUser) => storeUser.username === user.username)
+          console.log('leave', index)
+          store.users.splice(index, 1)
+          break
+      }
+    }
   })
   socket.on('message new', ({ message, messages }) => {
     if (messages.length > store.messages.length) {
