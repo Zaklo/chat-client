@@ -2,7 +2,7 @@ import Vue from 'vue'
 import router from './router'
 import io from 'socket.io-client'
 
-const socket = io('http://localhost:3000')
+const socket = io('https://bddi-2019-chat.herokuapp.com/')
 
 socket.on('connect', () => {
   const sessionUser = sessionStorage.getItem('user')
@@ -25,6 +25,9 @@ socket.on('connect', () => {
     } else {
       store.messages.push(message)
     }
+  })
+  socket.on('messages update', ({ messages }) => {
+    store.messages = messages
   })
   socket.on('command new', (msg) => {
     console.log('command new', msg)
