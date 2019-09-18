@@ -1,6 +1,6 @@
 <template>
   <div>
-    (<em>{{ formattedTime }}</em>) {{ message.name }}: {{ message.content }}
+    (<em>{{ formattedTime }}</em>) {{ message.user.username }}: {{ message.text }}
   </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
   },
   computed: {
     formattedTime () {
-      return moment(this.message.time).format('hh[h] mm[m]')
+      return moment(this.message.created).format('hh[h] mm[m]')
     }
   }
 }

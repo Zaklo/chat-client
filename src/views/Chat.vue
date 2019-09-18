@@ -26,11 +26,7 @@ export default {
   },
   methods: {
     onMessageSent (content) {
-      store.messages.push({
-        time: new Date(),
-        name: store.user.name,
-        content
-      })
+      store.sendMessage(content)
     }
   }
 }

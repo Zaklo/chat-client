@@ -1,5 +1,24 @@
 import Vue from 'vue'
 import router from './router'
+import io from 'socket.io-client'
+
+const socket = io('http://localhost:3000')
+
+socket.on('connect', () => {
+  socket.on('user registered', (user) => {
+    store.user = user
+    store.isRegistered = true
+  })
+  socket.on('users update', ({ users }) => {
+    store.users = users
+  })
+  socket.on('message new', ({ message }) => {
+    store.messages.push(message)
+  })
+  socket.on('command new', (msg) => {
+    console.log('command new', msg)
+  })
+})
 
 const store = new Vue({
   data: {
@@ -7,11 +26,7 @@ const store = new Vue({
       name: null,
       avatar: null
     },
-    users: [{
-      name: 'Booba'
-    }, {
-      name: 'Nekfeu'
-    }],
+    users: [],
     messages: [],
     isRegistered: false
   },
@@ -26,8 +41,13 @@ const store = new Vue({
   },
   methods: {
     registerUser (name) {
-      this.user.name = name
-      this.isRegistered = true
+      socket.emit('user register', {
+        username: name,
+        avatar: ''
+      })
+    },
+    sendMessage (message) {
+      socket.emit('message new', message)
     }
   }
 })

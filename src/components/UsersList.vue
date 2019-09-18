@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Connected as: {{ user.name }}</p>
+    <p>Connected as: {{ user.username }}</p>
     <p>
       {{ usersCount }}
     </p>
