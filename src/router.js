@@ -23,6 +23,12 @@ const router = new Router({
       path: '/login',
       name: 'login',
       component: Login
+    },
+    {
+      path: '/logout',
+      beforeEnter () {
+        store.logout()
+      }
     }
   ]
 })
