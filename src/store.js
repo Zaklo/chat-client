@@ -2,12 +2,19 @@ import Vue from 'vue'
 import router from './router'
 import io from 'socket.io-client'
 
-const socket = io('https://bddi-2019-chat.herokuapp.com/')
+const socket = io('http://localhost:3000')
 
 socket.on('connect', () => {
+  const sessionUser = sessionStorage.getItem('user')
+
+  if (sessionUser) {
+    store.registerUser(JSON.parse(sessionUser).username)
+  }
+
   socket.on('user registered', (user) => {
     store.user = user
     store.isRegistered = true
+    sessionStorage.setItem('user', JSON.stringify(user))
   })
   socket.on('users update', ({ users }) => {
     store.users = users
@@ -52,6 +59,11 @@ const store = new Vue({
     },
     sendMessage (message) {
       socket.emit('message new', message)
+    },
+    logout () {
+      sessionStorage.clear()
+      socket.disconnect()
+      router.push('/login')
     }
   }
 })
