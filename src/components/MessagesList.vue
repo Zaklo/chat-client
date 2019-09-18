@@ -1,11 +1,21 @@
 <template>
   <ul>
-    <li v-for="(message, i) in messages" :key="i">{{message}}</li>
+    <MessagesListMessage v-for="(message, i) in messages" :message="message" :key="i" />
   </ul>
 </template>
 
 <script>
+import MessagesListMessage from './MessagesListMessage'
+
 export default {
-  props: ['messages']
+  components: {
+    MessagesListMessage
+  },
+  props: {
+    messages: {
+      type: Array,
+      required: true
+    }
+  }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UsersList/>
+    <UsersList :users="users"/>
     <MessagesList :messages="messages"/>
     <MessageBox @messageSent="onMessageSent"/>
   </div>
@@ -14,7 +14,8 @@ import MessageBox from '../components/MessageBox.vue'
 export default {
   data () {
     return {
-      messages: []
+      messages: [],
+      users: ['Pierre', 'Paul', 'Jaques']
     }
   },
   components: {
@@ -23,8 +24,12 @@ export default {
     MessageBox
   },
   methods: {
-    onMessageSent (message) {
-      this.messages.push(message)
+    onMessageSent (content) {
+      this.messages.push({
+        time: new Date(),
+        name: 'Franco',
+        content
+      })
     }
   }
 }
