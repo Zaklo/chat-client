@@ -1,8 +1,19 @@
 <template>
   <div>
-    <UsersList :users="store.users" :user="store.user"/>
-    <MessagesList :messages="store.messages" :user="store.user"/>
-    <MessageBox @messageSent="onMessageSent"/>
+    <UsersList 
+      :users="store.users" 
+      :user="store.user"
+      :filter="filter"
+      @filterSelected="onFilterSelected"/>
+    <MessagesList 
+      :messages="store.messages" 
+      :user="store.user"
+      :users="store.users"
+      :filter="filter"
+      :typingUsers="typingUsers"/>
+    <MessageBox 
+      @messageSent="onMessageSent"
+      @typing="onTyping"/>
   </div>
 </template>
 
@@ -16,7 +27,8 @@ import store from '../store'
 export default {
   data () {
     return {
-      store
+      store,
+      filter: null
     }
   },
   components: {
@@ -27,6 +39,18 @@ export default {
   methods: {
     onMessageSent (content) {
       store.sendMessage(content)
+    },
+    onTyping () {
+      store.typing()
+    },
+    onFilterSelected (user) {
+      const isCurrentUser = this.filter && this.filter.username === user.username
+      this.filter = isCurrentUser ? null : user
+    }
+  },
+  computed: {
+    typingUsers () {
+      return store.users.filter((user) => user.typing)
     }
   }
 }

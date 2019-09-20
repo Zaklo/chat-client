@@ -1,11 +1,16 @@
 <template>
   <div>
-    <p>Connected as: {{ user.username }}</p>
+    <p>Connected as: <strong>{{ user.username }}</strong></p>
     <p>
-      {{ usersCount }}
+      <strong>{{this.users.length}}</strong> users connected`
     </p>
     <ul>
-      <UsersListUser v-for="(user, i) in users" :user="user" :key="i" />
+      <UsersListUser 
+        v-for="(user, i) in users" 
+        :user="user" 
+        :key="i"
+        :isFilterOwner="filter && filter.username === user.username"
+        @click.native="onUserClick(user)" />
     </ul>
   </div>
 </template>
@@ -25,12 +30,26 @@ export default {
     users: {
       type: Array,
       required: true
+    },
+    filter: {
+      type: Object
     }
   },
-  computed: {
-    usersCount () {
-      return `${this.users.length} users connected`
+  methods: {
+    onUserClick(user) {
+      this.$emit('filterSelected', user)
     }
   }
 }
 </script>
+
+<style lang="stylus" scoped>
+  div
+    position fixed 
+    top 100px
+    left 40px
+    text-align left
+
+  ul
+    list-style none
+</style>

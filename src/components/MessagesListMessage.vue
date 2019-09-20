@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'is-owner': isOwner }">
-    (<em>{{ formattedTime }}</em>) {{ message.user.username }}: {{ message.text }}
+    (<em>{{ formattedTime }}</em>) {{ message.user.username }}: {{ message.text }} ({{ message.emotion }})
   </div>
 </template>
 
@@ -26,6 +26,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+  div
+    background: green
+    padding: 20px
+    text-align left
+    border-radius 10px
+    margin-bottom 10px
   .is-owner
     background: pink
 </style>
