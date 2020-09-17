@@ -1,0 +1,17 @@
+.login {
+  width: 30vw;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.input-username{
+  width: 90%;
+  animation: blinker 1s linear infinite;
+}
+
+footer{
+  text-align: center;
+  width: 100%;
+}

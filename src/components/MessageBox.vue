@@ -1,8 +1,8 @@
 <template>
   <div>
-    <form @submit.prevent="onSubmit()">
-      <input v-model="message" type="text" placeholder="Entre ton message ici">
-      <button>envoyer</button>
+    <form @submit.prevent="onSubmit()" class="message-box-form">
+      <input v-model="message" type="text" placeholder="Entre ton message ici" class="form-control w-75">
+      <button class="btn btn-primary">envoyer</button>
     </form>
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
   methods: {
     onSubmit() {
       this.$emit('sendMessage', this.message);
+      this.message = '';
     },
   },
 };

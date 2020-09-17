@@ -1,0 +1,8 @@
+.wrapper-global{
+  display: grid;
+  grid-template-columns: 15% 85%;
+  grid-column-gap: 1em;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 90vh;
+}
