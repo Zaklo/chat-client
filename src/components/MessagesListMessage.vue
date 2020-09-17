@@ -8,7 +8,7 @@
           v-bind:src="message.user.avatar"
           class="user-avatar"
           style="float: right"/>
-      x
+
     </div>
     <em v-else> {{ message.user.username }}</em>
 
@@ -27,13 +27,13 @@
 
 <script>
 
-import store from '../store'
+import store from '../store';
 
 export default {
   computed: {
-    isCurrentUser () {
+    isCurrentUser() {
       return this.message.user.username
-          === store.$data.user.username
+          === store.$data.user.username;
     },
   },
   props: {
@@ -42,5 +42,5 @@ export default {
       require: true,
     },
   },
-}
+};
 </script>
