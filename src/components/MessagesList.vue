@@ -1,6 +1,6 @@
 <template>
   <div class="MessagesList">
-    <ul ref="list"  @mousewheel="onScroll" >
+    <ul ref="list" @mousewheel="onScroll" style="overflow: scroll; height: 80vh">
       <MessagesListMessage
           v-for="(message, i) in messages"
           :key="i"
@@ -11,11 +11,7 @@
 
 <script>
 import MessagesListMessage from '@/components/MessagesListMessage.vue';
-import Vue from 'vue';
 
-import VueChatScroll from 'vue-chat-scroll';
-
-Vue.use(VueChatScroll);
 export default {
   props: {
     messages: {

@@ -2,12 +2,12 @@
   <div ref="container">
     <div class="card card-tertiary">
       <div class="card-header">
-        chatroom
+        chatroom_3000
         <img v-bind:src="img" height="30" class="floating-sm"/>
         <a class="btn btn-primary logout" @click="toggleComponentError" v-on:click="addComponent">X</a>
       </div>
       <div class="wrapper-global">
-        <div class="card">
+        <div class="card bg-white">
           <UsersList :users="store.users" class="user-list"/>
         </div>
         <div>
@@ -59,7 +59,7 @@ export default {
         for (let i = 0; i < 1; i += 40) {
           this.count += 1;
         }
-      }, 800);
+      }, 750);
     },
     playSound() {
       const audio = new Audio(CLICK);

@@ -1,9 +1,33 @@
+.help-link{
+  text-decoration: underline;
+  text-align: right;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.help-card{
+  position: absolute;
+  font-size: 10px;
+  height: 200px;
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .card-header{
+    font-size: 10px;
+    height: auto;
+
+  }
+}
+
 a{
   text-decoration: none;
 }
+
 ul {
   list-style: none;
-  overflow: scroll;
 
   li {
     width: 92%;
@@ -30,13 +54,13 @@ ul {
 
 .user {
   &-list {
-    overflow-y: scroll;
     display: initial;
 
     &-user {
       border-bottom: 1px solid black;
       width: 100%;
       margin-top: 7px;
+      height: 25px;
     }
   }
 
@@ -92,9 +116,10 @@ ul {
   }
 
   .card-body {
-    height: 100px;
+
     width: 300px;
-    text-align: center;
+    font-size: 12px;
+
     img {
       display: inline-block;
       vertical-align: middle;
@@ -103,5 +128,3 @@ ul {
     }
   }
 }
-
-

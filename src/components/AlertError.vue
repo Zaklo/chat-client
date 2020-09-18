@@ -6,7 +6,10 @@
     <div class="card-body">
       <img src="../assets/img/error.png" height="30"> critical error
       <br/>
-      <a class="btn btn-primary" href="/logout">GET MET OUT !</a>
+        Error 200<br/>
+        Are you sure you want to do this?<br/>
+        Don’t leave us please, we are nice!<br/><br/>
+      <a class="btn btn-primary" href="/logout">Let me go !</a><br/>
     </div>
   </div>
 </template>

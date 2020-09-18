@@ -22,7 +22,6 @@ import CLICK from '@/assets/audio/pcmouseclick1.mp3';
 export default {
   methods: {
     playSound() {
-      console.log('window load event');
       const audio = new Audio(CLICK);
       audio.play();
     },
